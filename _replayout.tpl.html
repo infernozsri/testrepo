@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1561">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 45.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 13.0px; font: 11.0px 'Helvetica Neue'; color: #000000; -webkit-text-stroke: #000000; background-color: #ffffff}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
+    li.li2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    span.s1 {font-kerning: none}
+    span.s2 {font: 11.0px Times; font-kerning: none}
+    span.s3 {-webkit-text-stroke: 0px #000000}
+    span.Apple-tab-span {white-space:pre}
+    ul.ul1 {list-style-type: disc}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">{{:~getI18nValue('za.reports.burnupchart')}}</span></p>
+<p class="p2"><span class="s1">{{if showEpicReport}}</span></p>
+<p class="p3"><span class="s1"><span class="Apple-converted-space">            <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span></span><span class="s2">Sprint</span><span class="s1"> <span class="Apple-converted-space">           <span class="Apple-tab-span">	</span></span></span></p>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">{{:~getI18nValue('za.general.sprints')}}<span class="Apple-converted-space"> </span></span></p>
+<ul class="ul1">
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.general.sprints')}}</span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.menu.epic')}}</span></li>
+</ul>
+<p class="p2"><span class="s1">{{/if}}<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">{{:~getI18nValue('za.reports.pagetips')}}<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">{{:~getI18nValue('za.reports.datalastfetch')}} : {{:~getI18nValue('za.general.refresh')}}<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">{{:~getI18nValue('za.reports.charts')}}</span></p>
+<ul class="ul1">
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.reports.velocity')}}<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.reports.burndown')}}<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.reports.burnup')}}<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.reports.cumulativeflow')}}<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{if showEpicReport}}</span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.reports.epicsprintreport')}}<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{/if}}<span class="Apple-converted-space"> </span></span></li>
+</ul>
+<p class="p2"><span class="s1">{{if isLogAvail}}</span></p>
+<p class="p2"><span class="s1">Timesheet Reports</span></p>
+<ul class="ul1">
+  <li class="li2"><span class="s3"></span><span class="s1">By Sprints<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">By Workitem Type<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">By User<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">By Month<span class="Apple-converted-space"> </span></span></li>
+</ul>
+<p class="p2"><span class="s1">{{/if}}</span></p>
+<p class="p2"><span class="s1">{{:~getI18nValue('zp.reports.tab')}}</span></p>
+<ul class="ul1">
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.plan.completedsprints')}}<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.user.canceledsprint')}}<span class="Apple-converted-space"> </span></span></li>
+</ul>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p4"><span class="s1"></span><br></p>
+</body>
+</html>
