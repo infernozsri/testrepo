@@ -1,137 +1,63 @@
-<div style="display: block;" class="w100per oflowh bgf2f1ef" id="reportcontainer" style="min-height:400px;min-width:700px;">
-    <div class="w100per h60 fl">
-        <div class="fl pl30">
-            <div class="fs18 fl allproj pointer mt10 ffproxibld col444" style="line-height:45px" id="reportname">{{:~getI18nValue('za.reports.burnupchart')}}</div>
-            {{if showEpicReport}}
-            <div class="hide fl posrel" id="rep_type_slct_cont">
-            	<select class="hide" id="rep_type_slct">
-            		<option value="0">Sprint</option>
-            		<option value="1">Epic</option>
-            	</select>
-	            <div class="fl mt10" style="margin-top: 30px;"><span class="fl agicon-arw-down rotatem90 f16 ml10 col999 h10"></span></div>
-	            <div class="fl posrel pl5" id="rep_cs_slct">
-					<div class="fl allmenubox col2c7bd0 allmenuboxSel repepicselbox maxw200px" >
-						<span class="fl allproj pointer zs_cs_label l23 w92per txtDot" style="width: calc(100% - 20px);">{{:~getI18nValue('za.general.sprints')}}</span> <span class="agicon-arrow_drop_down f22 fr w15 col2c7bd0" agtitle="View By" style="line-height: 25px;"></span>
-					</div>
-					<div class="w250 posabs z6 hide sevent zs_cs_drpdn"   oscclass="hide" style="left: 5px; top: 31px; opacity: 1; ">
-				        <div class="agdropdown w100per T20 boxShadow box-sizing" style="width:170px; margin-left:10px; padding:12px 20px 15px;">
-							<div class="fl w100per">
-								<div class="w100per fl pointer lh25 col222">
-									<ul class="m0 p0 liststyleNone pointer lh35">
-										<li class="bdrbtm5 hov_bdrbtm3098b9 trans05s zs_cs_option" value="0">{{:~getI18nValue('za.general.sprints')}}</li>
-										<li class="bdrbtm5 hov_bdrbtm3098b9 trans05s zs_cs_option" value="1">{{:~getI18nValue('za.menu.epic')}}</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-				     </div>
-				</div>
-			</div>
-			{{/if}}
-        </div>
-        
-        <div class="fr pointer tooltip_down posrel z1" agtitle="{{:~getI18nValue('za.reports.pagetips')}}" id="pagetips" style="padding-right:19px; margin-top:22px;">
-            <span class="agicon-info f15 col2c7bd0 fl pr7 fontsmoothauto pl1" style="line-height:22px"></span>
-            <span class="posrel fs15 col2c7bd0">{{:~getI18nValue('za.reports.pagetips')}}</span>
-        </div>
-        
-         <div class="fr fs11 col777 mt25 mR30 hide rep_hide_elmnts spr_burn_dn_shw not_shw_cmpr_spr hide_comp_spr">
-			<span class="pr10">{{:~getI18nValue('za.reports.datalastfetch')}} : <span id="datafetchtime"></span></span> <span class="col2c7bd0 pl10 bdrlft-bababa ttcaps pointer" id="dropcache">{{:~getI18nValue('za.general.refresh')}}</span>
-		</div>
-    </div>
-    <div id="repcont" class="maincont w100per inlineBlock" style="height:calc(100% - 70px);">
-        <div style="" class="inlineBlock h100per w100per " id="chart_page_div">
-            <div class="h100per pr10 pl10 fl bdrrt bgwhite ml10 mr5 bdrrds3px bdr-d7d7d7 oflowh posrel" id="replefttab" style="width:205px; overflow-y:auto;">
-                <div class="bdrbtm5  pl10 pt20 fl w100per pr10 box-sizing">
-                 	<span class="agicon-sprint-expand trans05s pointer f13 col999 fl repExpCol" style="line-height: 27px;"></span>
-                 	<span class="fs15 mB15 mt3 fl pl7 ffproxibld">{{:~getI18nValue('za.reports.charts')}}</span>
-                    <ul class="pm0 liststyleNone clrboth pb15" id="charttype_parent">
-                        <li class="pt10 pb10 rep_charttype pointer" id="rep_charttype_{{>~gvar('Agile.Constants.reportType.velocity')}}">
-                            <span class="fontsmoothauto f13 pointer fl agicon-checkbox-unchecked colaaa cs_radio" style="line-height:22px;">
-                          	  <input type="radio" class="hide chart_radio" value="{{>~gvar('Agile.Constants.reportType.velocity')}}" name="chart_sel_radio">
-                            </span> 
-                            <span class="pl5 fs14">{{:~getI18nValue('za.reports.velocity')}}</span>
-                        </li>
-                        <li class="pt10 pb10 rep_charttype pointer" id="rep_charttype_{{>~gvar('Agile.Constants.reportType.burndown')}}">
-                            <span  class="fontsmoothauto f13 pointer fl agicon-checkbox-unchecked colaaa cs_radio" style="line-height:22px;">
-                            	<input type="radio" class="hide chart_radio" value="{{>~gvar('Agile.Constants.reportType.burndown')}}" name="chart_sel_radio">
-                            </span>
-                             <span class="pl5 fs14 chart_name">{{:~getI18nValue('za.reports.burndown')}}</span>
-                        </li>
-                        <li class="pt10 pb10 rep_charttype pointer" id="rep_charttype_{{>~gvar('Agile.Constants.reportType.burnup')}}">
-                            <span class="fontsmoothauto f13 pointer fl agicon-checkbox-unchecked colaaa cs_radio" style="line-height:22px;">
-                            	<input type="radio" class="hide chart_radio" value="{{>~gvar('Agile.Constants.reportType.burnup')}}" name="chart_sel_radio">
-                            </span>
-                            <span class="pl5 fs14">{{:~getI18nValue('za.reports.burnup')}}</span>
-                        </li>
-                        <li class="pt10 pb10 rep_charttype pointer" id="rep_charttype_{{>~gvar('Agile.Constants.reportType.cummulative')}}">
-                            <span class="fontsmoothauto f13 pointer fl agicon-checkbox-unchecked colaaa cs_radio" style="line-height:22px;">
-                            	<input type="radio" class="hide chart_radio" value="{{>~gvar('Agile.Constants.reportType.cummulative')}}" name="chart_sel_radio">
-                            </span>
-                            <span class="pl5 fs14">{{:~getI18nValue('za.reports.cumulativeflow')}}</span>
-                        </li>
-                        {{if showEpicReport}}
-                         <li class="pt10 pb10 rep_charttype pointer" id="rep_charttype_{{>~gvar('Agile.Constants.reportType.epicsprintreport')}}">
-                            <span class="fontsmoothauto f13 pointer fl agicon-checkbox-unchecked colaaa cs_radio" style="line-height:22px;">
-                           		 <input type="radio" class="hide chart_radio"  value="{{>~gvar('Agile.Constants.reportType.epicsprintreport')}}" name="chart_sel_radio">
-                           	</span>
-                            <span class="pl5 fs14">{{:~getI18nValue('za.reports.epicsprintreport')}}</span>
-                        </li>
-                        {{/if}}
-                    </ul>
-                </div>
-                {{if isLogAvail}}
-                <div class="bdrbtm5 pl10 pt15 clrboth fl w100per pr10 box-sizing">  
-                	<span class="agicon-sprint-expand trans05s pointer f13 col999 fl repExpCol" style="line-height: 27px;"></span>
-					<span class="fs15 mB15 mt3 fl ffproxibld ml7">Timesheet Reports</span>  
-					<ul class="pm0 liststyleNone clrboth pb15" id="charttype_parent">  
-						<li class="pt10 pb10 rep_charttype pointer" id="rep_charttype_{{>~gvar('Agile.Constants.reportType.logHrBySprint')}}">  
-							<span class="fontsmoothauto f13 pointer fl agicon-checkbox-unchecked colaaa cs_radio" style="line-height:22px;">  
-								<input type="radio" class="hide chart_radio" value="{{>~gvar('Agile.Constants.reportType.logHrBySprint')}}" name="chart_sel_radio">  
-							</span>   
-							<span class="pl7 fs14">By Sprints</span>
-						</li>  
-						<li class="pt10 pb10 rep_charttype pointer" id="rep_charttype_{{>~gvar('Agile.Constants.reportType.logHrByItemType')}}">  
-							<span class="fontsmoothauto f13 pointer fl agicon-checkbox-unchecked colaaa cs_radio" style="line-height:22px;">  
-								<input type="radio" class="hide chart_radio" value="{{>~gvar('Agile.Constants.reportType.logHrByItemType')}}" name="chart_sel_radio">  
-							</span>  
-							<span class="pl7 fs14 chart_name">By Workitem Type</span>  
-						</li>  
-						<li class="pt10 pb10 rep_charttype pointer" id="rep_charttype_{{>~gvar('Agile.Constants.reportType.logHrByUser')}}">  
-							<span class="fontsmoothauto f13 pointer fl agicon-checkbox-unchecked colaaa cs_radio" style="line-height:22px;">  
-								<input type="radio" class="hide chart_radio" value="{{>~gvar('Agile.Constants.reportType.logHrByUser')}}" name="chart_sel_radio">  
-							</span>  <span class="pl7 fs14">By User</span>  
-						</li>
-						<li class="pt10 pb10 rep_charttype pointer" id="rep_charttype_{{>~gvar('Agile.Constants.reportType.logHrByDate')}}">  
-							<span class="fontsmoothauto f13 pointer fl agicon-checkbox-unchecked colaaa cs_radio" style="line-height:22px;">  
-								<input type="radio" class="hide chart_radio" value="{{>~gvar('Agile.Constants.reportType.logHrByDate')}}" name="chart_sel_radio">  
-							</span>  <span class="pl7 fs14">By Month</span>  
-						</li>          
-					</ul> 
-				</div>
-				{{/if}}
-                <div class="pl10 pt15 clrboth fl w100per pr10 box-sizing">
-                	<span class="agicon-sprint-expand trans05s pointer f13 col999 fl repExpCol" style="line-height: 27px;"></span>
-                    <span class="fs15 fl mB15 ml7 mt3 ffproxibld">{{:~getI18nValue('zp.reports.tab')}}</span>
-                    <ul class="pm0 liststyleNone mt20 clrboth">
-                        <li class="pt10 pb10 rep_charttype pointer" id="rep_charttype_{{>~gvar('Agile.Constants.reportType.completedlist')}}">
-                            <span class="fontsmoothauto f13 pointer fl agicon-checkbox-unchecked colaaa cs_radio" style="line-height:22px;">
-                            	<input type="radio" class="hide chart_radio" value="{{>~gvar('Agile.Constants.reportType.completedlist')}}"  name="chart_sel_radio">
-                            </span>
-                            <span class="pl5 fs14">{{:~getI18nValue('za.plan.completedsprints')}}</span>
-                        </li>
-                        <li class="pt10 pb10 rep_charttype pointer" id="rep_charttype_{{>~gvar('Agile.Constants.reportType.canceledlist')}}">
-                            <span class="fontsmoothauto f13 pointer fl agicon-checkbox-unchecked colaaa cs_radio" style="line-height:22px;">
-                           		 <input type="radio" class="hide chart_radio"  value="{{>~gvar('Agile.Constants.reportType.canceledlist')}}" name="chart_sel_radio">
-                           	</span>
-                            <span class="pl5 fs14">{{:~getI18nValue('za.user.canceledsprint')}}</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="fl h100per bgwhite bdrrds3px bdr-d7d7d7 rep_right_tab_rep" id="rep_chart_cont"></div>
-        </div>
-    </div>
-    <div id="reppagetips" class="posabs R0" style="top:1px;"></div>
-	<div class="posabs boxShadow transition05s" id="timesheetfiltercontainer" style="z-index:10002"></div>
-</div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1561">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 45.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 13.0px; font: 11.0px 'Helvetica Neue'; color: #000000; -webkit-text-stroke: #000000; background-color: #ffffff}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
+    li.li2 {margin: 0.0px 0.0px 0.0px 0.0px; line-height: 14.0px; font: 12.0px Times; color: #000000; -webkit-text-stroke: #000000}
+    span.s1 {font-kerning: none}
+    span.s2 {font: 11.0px Times; font-kerning: none}
+    span.s3 {-webkit-text-stroke: 0px #000000}
+    span.Apple-tab-span {white-space:pre}
+    ul.ul1 {list-style-type: disc}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">{{:~getI18nValue('za.reports.burnupchart')}}</span></p>
+<p class="p2"><span class="s1">{{if showEpicReport}}</span></p>
+<p class="p3"><span class="s1"><span class="Apple-converted-space">            <span class="Apple-tab-span">	</span><span class="Apple-tab-span">	</span></span></span><span class="s2">Sprint</span><span class="s1"> <span class="Apple-converted-space">           <span class="Apple-tab-span">	</span></span></span></p>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">{{:~getI18nValue('za.general.sprints')}}<span class="Apple-converted-space"> </span></span></p>
+<ul class="ul1">
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.general.sprints')}}</span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.menu.epic')}}</span></li>
+</ul>
+<p class="p2"><span class="s1">{{/if}}<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">{{:~getI18nValue('za.reports.pagetips')}}<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">{{:~getI18nValue('za.reports.datalastfetch')}} : {{:~getI18nValue('za.general.refresh')}}<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">{{:~getI18nValue('za.reports.charts')}}</span></p>
+<ul class="ul1">
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.reports.velocity')}}<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.reports.burndown')}}<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.reports.burnup')}}<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.reports.cumulativeflow')}}<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{if showEpicReport}}</span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.reports.epicsprintreport')}}<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{/if}}<span class="Apple-converted-space"> </span></span></li>
+</ul>
+<p class="p2"><span class="s1">{{if isLogAvail}}</span></p>
+<p class="p2"><span class="s1">Timesheet Reports</span></p>
+<ul class="ul1">
+  <li class="li2"><span class="s3"></span><span class="s1">By Sprints<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">By Workitem Type<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">By User<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">By Month<span class="Apple-converted-space"> </span></span></li>
+</ul>
+<p class="p2"><span class="s1">{{/if}}</span></p>
+<p class="p2"><span class="s1">{{:~getI18nValue('zp.reports.tab')}}</span></p>
+<ul class="ul1">
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.plan.completedsprints')}}<span class="Apple-converted-space"> </span></span></li>
+  <li class="li2"><span class="s3"></span><span class="s1">{{:~getI18nValue('za.user.canceledsprint')}}<span class="Apple-converted-space"> </span></span></li>
+</ul>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p4"><span class="s1"></span><br></p>
+</body>
+</html>
